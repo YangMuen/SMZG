@@ -7,17 +7,17 @@ var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
     function getSwtyItemsData(valuesDate){
         var server = 'http://api.swtychina.com/api/values?';
         $.ajax({
-    url: server + valuesDate,
-            type: 'GET',
-            dataType: 'json',
-            timeout: 10000,
-            error: function(data){
-    alert('加载数据失败，再次点击试试~？');
-},
+            url: server + valuesDate,
+                    type: 'GET',
+                    dataType: 'json',
+                    timeout: 10000,
+                    error: function(data){
+                        alert('加载数据失败，再次点击试试~？');
+                    },
             success: function(data){
-    // 删除原有节目
-    deleteProgramList("ProgramList");
-var parent = document.getElementById("ProgramList");
+                // 删除原有节目
+                deleteProgramList("ProgramList");
+                var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
                 $.each(data, function(index, val) {
                     var year = val.date.substring(0, 4);
@@ -41,15 +41,12 @@ var parent = document.getElementById("ProgramList");
                 //console.log("Allitem:",allItem);
             }
         });
-
     }
 
     // swty:   http://api.swtychina.com/api/values
     // mcchome: http://api.swtychina.com/api/swtymp3?path=mcchome/2018/201801
     // date=2010-**
     // ?date=2010-01
-
-
     function loadLatestItem(id)
     {
         isLoadLatestItem = true;

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SMZG.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SMZGControllerBase
     {
         public ActionResult Index()
         {

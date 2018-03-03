@@ -1,40 +1,42 @@
 ﻿
-//var allItem = new Array();
-var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
+    //var allItem = new Array();
+    var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
     var playerImgUrl = "http://swtychina.com/gb/images/ting.gif";
     var evenNumber = 0;
+    var arrmonth = ["1","2","3","4","5","6","7","8","9","10","11","12"];
     //var isLoadLatestItem = false;
+
     function getSwtyItemsData(valuesDate){
         var server = 'http://api.swtychina.com/api/values?';
         $.ajax({
             url: server + valuesDate,
-                    type: 'GET',
-                    dataType: 'json',
-                    timeout: 10000,
-                    error: function(data){
-                        alert('加载数据失败，再次点击试试~？');
-                    },
+            type: 'GET',
+            dataType: 'json',
+            timeout: 10000,
+            error: function(data){
+                alert('加载数据失败，再次点击试试~？');
+            },
             success: function(data){
                 // 删除原有节目
                 deleteProgramList("ProgramList");
                 var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
-                $.each(data, function(index, val) {
+                $.each(data, function (index, val) {
+                    var itemDate = val.date.substring(0, 10);
+
                     var year = val.date.substring(0, 4);
                     var month = year + val.date.substring(5, 7);
                     var day = month + val.date.substring(8, 10);
-
                     // 下载地址：http://swtychina.com/gb/audiodoc/2018/201801/20180101.mp3
                     var Url = auditonUrl+ "/" + year + "/" + month + "/" + day + ".mp3";
 
                     // 去掉山外天园节目title前缀“小贝回来了(000):”
                     //var mccItemTitle = val.title.slice(11, val.title.length);
                     var mccItemTitle = val.title;
-                    var item = {date:val.date, url:Url, title:mccItemTitle};
+                    var item = { date:itemDate, url:Url, title:mccItemTitle};
                     //console.log("getSwtyItemsDate()->isLoadLatestItem",isLoadLatestItem);
                     loadItem(parent, item,evenNumber%2 != 0);
                     evenNumber++;
-
                 });
                 evenNumber = 0;
                 isLoadLatestItem = false;
@@ -90,7 +92,7 @@ var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
         }
         else{
         parent_div.setAttribute("class", "row mccItem");
-    }
+        }
 
         //parent_div.setAttribute("className","row");
         parent_div.setAttribute("name","item");
@@ -113,7 +115,7 @@ var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
         parent_div.appendChild(child_div_player);
 
         var child_div_player_a = document.createElement("a");
-        child_div_player_a.setAttribute("href","#");
+        child_div_player_a.setAttribute("href","javascript:void(0)");
         child_div_player.appendChild(child_div_player_a);
 
         var child_div_player_a_img = document.createElement("img");
@@ -151,12 +153,12 @@ var imgurl = "http://www.swtychina.com/gb/images/download16.gif";
 
     function searchItem() {
 
-    isLoadLatestItem = true;           
-var input_value = document.getElementById("itemname").value;
+        isLoadLatestItem = true;           
+        var input_value = document.getElementById("itemname").value;
         //console.log("nodeValue",input_value);
         if (input_value.length == 0) {
-    alert("请输入搜素关键字~！");
-return;
+            alert("请输入搜素关键字~！");
+            return;
         }
         // 删除原有节目
         //deleteProgramList("ProgramList");
@@ -166,6 +168,43 @@ return;
         getSwtyItemsData(search_value);
     }
 
+    function updateYearNavigation(yearmonth) {
+        var value = yearmonth;
+        var str = "";
+        for (var nIndex = 1; nIndex < 13; nIndex++)
+        {
+            value++;
+            $("#" + nIndex).text(value);
 
-    $(function () {$('#collapse2018').collapse('hide')});
-    $(function () {$('#collapseBiblestudy').collapse('show')});
+            //getSwtyItemsData('date=2018-01')
+            str = value;
+            var year = String(str).substring(0, 4);
+            var month = String(str).substring(4, 6);
+            var attr = "getSwtyItemsData(\'date=" + year +"-"+ month + "\')";
+            $("#" + nIndex).attr("onclick", attr);
+        }
+    }
+    //$(function () { $('#collapseyear').collapse('toggle') });
+    //$(function () { $('#collapseyear').collapse('show') });
+    $(function () { $('#collapseBiblestudy').collapse('hide') });
+
+    $(document).ready(function () {
+        console.log("ready:");
+        
+        loadLatestItem();        
+
+        $("a[id='otheryear']").click(function () { 
+            
+            var year = $(this).text();
+            var yearuse = year.substring(0, 4);
+
+            // 更新选择年份的1月的节目
+            console.log("date=" + "yearuse" + "-" + "01");
+            getSwtyItemsData("date="+yearuse+"-"+"01"); 
+            // 将选择置为当前            
+            $("#currentyear").text(year);
+            // 更新当前节目导航
+            $("#itemsNavigationYear").text(year);
+            updateYearNavigation(Number(yearuse)*100);
+        });
+    });

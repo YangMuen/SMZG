@@ -63,3 +63,11 @@
 .mccPanelHeading {
     padding: 7px 7px;
 }
+
+.mcc-current-year {
+    margin-bottom:5px;
+}
+.mcc-current-year span{
+    font-size:16px;
+    /*vertical-align:bottom;*/
+}

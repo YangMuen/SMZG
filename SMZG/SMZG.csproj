@@ -223,6 +223,19 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\mmexport1522049471884.jpg" />
+    <Content Include="Content\images\mmexport1522049503334.jpg" />
+    <Content Include="Content\images\mmexport1522049515033.jpg" />
+    <Content Include="Content\images\mmexport1522049536128.jpg" />
+    <Content Include="Content\images\mmexport1522049552930.jpg" />
+    <Content Include="Content\images\mmexport1522049881993.jpg" />
+    <Content Include="Content\images\mmexport1522049891177.jpg" />
+    <Content Include="Content\images\mmexport1522049902637.jpg" />
+    <Content Include="Content\images\mmexport1522049913308.jpg" />
+    <Content Include="Content\images\mmexport1522051771220.jpg" />
+    <Content Include="Content\images\mmexport1522051816390.jpg" />
+    <Content Include="Content\images\mmexport1522051841997.jpg" />
+    <Content Include="Content\images\SMZG.jpg" />
     <Content Include="Content\jquery.mobile-1.4.5.min.css" />
     <Content Include="Content\Swtychina.css" />
     <Content Include="favicon.ico" />
@@ -297,9 +310,9 @@
     <Content Include="Views\Album\Detail.cshtml" />
     <Content Include="Views\Shared\_HeaderSwtychina.cshtml" />
     <Content Include="Views\Album\SwtychinaAlbum.cshtml" />
+    <Content Include="Views\Album\_Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\images\" />
     <Folder Include="Views\SMZGControllerBase\" />
   </ItemGroup>
   <ItemGroup>

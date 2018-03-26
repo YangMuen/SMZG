@@ -6,20 +6,31 @@
     var arrmonth = ["1","2","3","4","5","6","7","8","9","10","11","12"];
     //var isLoadLatestItem = false;
 
+    function toggleLoadingControls(loading) {
+        if (loading) {
+            document.querySelector('.spinner').setAttribute('class', "spinner");            
+        }
+        else {
+            document.querySelector('.spinner').setAttribute('class', "spinner hidden");
+        }
+    }
+
     function getSwtyItemsData(valuesDate){
         //var server = 'http://api.swtychina.com/api/values?';
         var server = 'http://localhost:61698/api/values?';
+        toggleLoadingControls(true);
         $.ajax({
             url: server + valuesDate,
             type: 'GET',
             dataType: 'json',
             timeout: 10000,
             error: function(data){
-                alert('加载数据失败，再次点击试试~？');
+                alert('不要着急我正在加载~？');
+                toggleLoadingControls(false);
             },
             success: function(data){
                 // 删除原有节目
-                deleteProgramList("ProgramList");
+                //deleteProgramList("ProgramList");
                 var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
                 $.each(data, function (index, val) {
@@ -42,6 +53,7 @@
                 evenNumber = 0;
                 isLoadLatestItem = false;
                 //console.log("Allitem:",allItem);
+                toggleLoadingControls(false);
             }
         });
     }
@@ -164,7 +176,7 @@
             return;
         }
         // 删除原有节目
-        //deleteProgramList("ProgramList");
+        deleteProgramList("ProgramList");
         var search_value = "date=" + input_value;
         console.log("search_value:",search_value);
         console.log("isLoadLatestItem",isLoadLatestItem);

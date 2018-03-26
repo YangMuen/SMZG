@@ -10,6 +10,19 @@
             <h4 class="mccTitle">归档节目</h4>
             <div class="mcc-current-year">
                 <strong><span>选择节目年份：</span></strong>
+                @*<div class="ui-field-contain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>选择节目年份：</legend>
+                        <label for="select-h-1a">Select A</label>
+                        <select name="select-h-1a" id="select-h-1a">
+                            <option id="otheryear">One</option>
+                            <option id="otheryear">Two</option>
+                            <option id="otheryear">Three</option>
+                        </select>                        
+                    </fieldset>
+                </div>*@
+
+
                 <div class="btn-group">
                     <button id="currentyear" type="button" class="btn btn-primary">2018年</button>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -28,7 +41,7 @@
                         <li><a id="otheryear">2015年</a></li>
                         <li><a id="otheryear">2016年</a></li>
                         <li><a id="otheryear">2017年</a></li>
-                        <li><a id="otheryear">2018年</a></li>                        
+                        <li><a id="otheryear">2018年</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,44 +57,44 @@
                     <div id="collapseyear" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="1" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-01')">201801</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="2" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-02')">201802</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="3" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-03')">201803</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="4" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-04')">201804</a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="5" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-05')">201805</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="6" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-06')">201806</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="7" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-07')">201807</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="8" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-08')">201808</a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="9" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-09')">201809</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="10" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-10')">201810</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="11" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-11')">201811</a>
                                 </div>
-                                <div class="col-sm-2 col-xs-3">
+                                <div class="col-xs-3">
                                     <a id="12" href="javascript:void(0)" class="mccMonth" onclick="getSwtyItemsData('date=2018-12')">201812</a>
                                 </div>
                             </div>
@@ -92,9 +105,7 @@
                 <div class="panel panel-default hide">
                     <div class="panel-heading mccPanelHeading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseBiblestudy" class="mccYear">
-                                查经类
-                            </a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseBiblestudy" class="mccYear">查经类</a>
                         </h4>
                     </div>
                     <div id="collapseBiblestudy" class="panel-collapse collapse in">

@@ -26,9 +26,6 @@ namespace SMZG.Controllers
 
             return View();
         }
-        public ActionResult Swtychina()
-        {
-           return View();
-        }
+        
     }
 }

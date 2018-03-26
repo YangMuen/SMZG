@@ -7,7 +7,8 @@
     //var isLoadLatestItem = false;
 
     function getSwtyItemsData(valuesDate){
-        var server = 'http://api.swtychina.com/api/values?';
+        //var server = 'http://api.swtychina.com/api/values?';
+        var server = 'http://localhost:61698/api/values?';
         $.ajax({
             url: server + valuesDate,
             type: 'GET',
@@ -142,7 +143,9 @@
 
         // title div begin
         var child_div3 = document.createElement("div");
-        child_div3.setAttribute("class","col-sm-8 col-xs-12");
+        child_div3.setAttribute("class", "col-sm-8 col-xs-12");
+        child_div3.setAttribute("onclick", "playMe(this);");
+        child_div3.setAttribute("playurl", data.url);
 
         parent_div.appendChild(child_div3);
 

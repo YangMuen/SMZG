@@ -1,0 +1,13 @@
+﻿@using SMZG.Models;
+@{
+    ViewBag.Title = "Detail";
+    var dailyvideoList = (ViewBag.AlbumItemList == null) ? (new Album()) : (Album)ViewBag.AlbumItemList;
+}
+
+<h2>@dailyvideoList.Name</h2>
+<h3>@dailyvideoList.Introduce</h3>
+@foreach(var temp in dailyvideoList.ItemList)
+{
+    <p>@temp.title -- @temp.date</p>
+}
+

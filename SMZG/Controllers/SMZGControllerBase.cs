@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SMZG.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -30,5 +34,37 @@ namespace SMZG.Controllers
 
             return false;
         }
+
+        public string GetFileJson(string filepath)
+        {
+            string json = string.Empty;
+            using (FileStream fs = new FileStream(filepath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite))
+            {
+                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                {
+                    json = sr.ReadToEnd().ToString();
+                }
+            }
+            return json;
+        }
+
+        protected Album GetAlbumItemList(string albumName)
+        {
+            // "~/App_Data/TestAlbum.json"
+            string filepath = Server.MapPath("~/App_Data/"+ albumName);
+            string json = GetFileJson(filepath);
+
+            return (Album)JsonConvert.DeserializeObject(json, typeof(Album));            
+        }
+
+        protected void SetAlbumItemList(string albumName)
+        {
+            var albumItemList = GetAlbumItemList(albumName);
+
+            ViewBag.AlbumItemList = albumItemList;
+        }
+
+
+
     }
 }

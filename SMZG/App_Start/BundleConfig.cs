@@ -8,8 +8,11 @@ namespace SMZG
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(                       
                         "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquerymobile").Include(
+                        "~/Scripts/jquery.mobile-1.4.5.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,9 +25,13 @@ namespace SMZG
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/swtyjs").Include(
+                      "~/Scripts/swtychina.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/jquery.mobile-1.4.5.min.css",
+                      "~/Content/Swtychina.css",
                       "~/Content/site.css"));
         }
     }
